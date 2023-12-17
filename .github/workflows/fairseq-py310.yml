@@ -1,4 +1,4 @@
-name: Build Fairseq for win-amd64-cp310
+name: Build fairseq for win-amd64-cp310
 
 on:
   workflow_dispatch:

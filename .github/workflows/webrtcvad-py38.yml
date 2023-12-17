@@ -1,4 +1,4 @@
-name: Build librosa-0.8.0 for win-amd64-cp38
+name: Build webrtcvad-2.0.10 for win-amd64-cp38
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ jobs:
 
     - name: Build wheel
       run: |
-        pip wheel --no-deps -w ./dist_built_wheels librosa==0.8.0
+        pip wheel --no-deps -w ./dist_built_wheels webrtcvad
 
     - name: Upload built wheel
       uses: actions/upload-artifact@v4.0.0
