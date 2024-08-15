@@ -1,0 +1,35 @@
+name: Build distorm3 for win-amd64-cp310
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up python
+      uses: actions/setup-python@v5.0.0
+      with:
+        python-version: 3.10.11
+        architecture: x64
+
+    - name: Install and upgrade pip
+      run: |
+        python -m ensurepip --default-pip
+        python -m pip install --upgrade pip
+
+    - name: Build wheel
+      run: |
+        pip wheel --no-deps -w ./dist_built_wheels distorm3
+
+    - name: Upload built wheel
+      uses: actions/upload-artifact@v4.0.0
+      with:
+        name: dist_built_wheels
+        path: ./dist_built_wheels
+        if-no-files-found: error
+        
